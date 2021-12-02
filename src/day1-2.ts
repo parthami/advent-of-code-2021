@@ -1,20 +1,16 @@
-const puzzleInput = [];
-let answer = 0;
+import _ from "lodash";
 
-// for (let index = 1; index < puzzleInput.length; index++) {
-//   const curr = puzzleInput[index];
-//   const prev = puzzleInput[index - 1];
-//   if (curr > prev) {
-//     answer++;
-//   }
-// }
+export function solver(puzzleInput: Array<number>) {
+  let reducedInput = puzzleInput.map((e, i, a) => {
+    return e + a[i + 1] + a[i + 2];
+  });
 
-let prev = 173;
-puzzleInput.forEach((curr) => {
-  if (curr > prev) {
-    answer++;
-  }
-  prev = curr;
-});
+  reducedInput = _.compact(reducedInput);
 
-document.getElementById("day1-2").innerHTML = "Day 1-2: " + answer.toString();
+  const ans = reducedInput.reduce((c, v, i, a) => {
+    const match = v > a[i - 1] ? 1 : 0;
+    return c + match;
+  }, 0);
+
+  return ans;
+}
