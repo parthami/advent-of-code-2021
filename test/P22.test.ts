@@ -1,5 +1,5 @@
-import { solver } from "../src/day2-2";
-import { puzzleInput } from "../src/inputs/day2";
+import { solver } from "../src/P22";
+import { puzzleInput } from "../src/inputs/P2";
 
 const input = [
   { action: "forward", value: 5 },
